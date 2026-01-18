@@ -6,8 +6,8 @@
 
 body {
     font-family: 'Poopins', monospace;
-    background: #000;
-    color: #fff;
+    background: #f8fff8;
+    color: #333;
     height: 100vh;
     overflow: hidden;
 }
@@ -19,12 +19,13 @@ body {
     top: 0;
     width: 300px;
     height: 100vh;
-    background: #111;
-    border-right: 4px solid #00ff88;
+    background: #fafffa;
+    border-right: 4px solid #008000;
     transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
     display: flex;
     flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 128, 0, 0.2);
 }
 
 .sidebar.open {
@@ -33,8 +34,8 @@ body {
 
 .sidebar-header {
     padding: 20px;
-    border-bottom: 4px solid #00ff88;
-    background: #000;
+    border-bottom: 4px solid #008000;
+    background: #f0fff0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,15 +46,13 @@ body {
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 3px;
-    background: linear-gradient(90deg, #00ff88, #00cc88);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #006400;
 }
 
 .clear-history-btn {
     background: none;
-    border: 2px solid #00ff88;
-    color: #00ff88;
+    border: 2px solid #008000;
+    color: #006400;
     padding: 8px 15px;
     cursor: pointer;
     font-family: 'Poopins', monospace;
@@ -65,21 +64,22 @@ body {
 }
 
 .clear-history-btn:hover {
-    background: #00ff88;
-    color: #000;
+    background: #008000;
+    color: #fff;
 }
 
 .history-list {
     flex: 1;
     overflow-y: auto;
     padding: 10px;
+    background: #fafffa;
 }
 
 .history-item {
     padding: 15px;
     margin-bottom: 10px;
-    background: #111;
-    border: 2px solid #00ff88;
+    background: #f0fff0;
+    border: 2px solid #008000;
     cursor: pointer;
     font-weight: 900;
     text-transform: uppercase;
@@ -90,24 +90,24 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: #fff;
+    color: #006400;
 }
 
 .history-item:hover {
-    background: #00ff88;
-    color: #000;
+    background: #008000;
+    color: #fff;
     transform: translateX(5px);
 }
 
 .history-item.active {
-    background: #00ff88;
-    color: #000;
-    border: 2px solid #00ff88;
+    background: #008000;
+    color: #fff;
+    border: 2px solid #008000;
 }
 
 .history-time {
     font-size: 10px;
-    color: #00cc88;
+    color: #228b22;
     margin-top: 5px;
     text-transform: uppercase;
 }
@@ -115,7 +115,7 @@ body {
 .no-history {
     padding: 30px 20px;
     text-align: center;
-    color: #00cc88;
+    color: #228b22;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -123,16 +123,16 @@ body {
 
 .sidebar-footer {
     padding: 20px;
-    border-top: 4px solid #00ff88;
-    background: #000;
+    border-top: 4px solid #008000;
+    background: #f0fff0;
 }
 
 .new-chat-btn {
     width: 100%;
     padding: 15px;
-    background: #00ff88;
-    color: #000;
-    border: 4px solid #00ff88;
+    background: #008000;
+    color: #fff;
+    border: 4px solid #008000;
     font-family: 'Poopins', monospace;
     font-weight: 900;
     font-size: 16px;
@@ -143,8 +143,8 @@ body {
 }
 
 .new-chat-btn:hover {
-    background: #000;
-    color: #00ff88;
+    background: #fff;
+    color: #008000;
 }
 
 /* Main Chat Area */
@@ -158,8 +158,8 @@ body {
 /* Header */
 .header {
     padding: 20px;
-    border-bottom: 4px solid #00ff88;
-    background: #000;
+    border-bottom: 4px solid #008000;
+    background: #f0fff0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -167,8 +167,8 @@ body {
 
 .menu-btn {
     background: none;
-    border: 4px solid #00ff88;
-    color: #00ff88;
+    border: 4px solid #008000;
+    color: #006400;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -182,8 +182,8 @@ body {
 }
 
 .menu-btn:hover {
-    background: #00ff88;
-    color: #000;
+    background: #008000;
+    color: #fff;
 }
 
 .logo {
@@ -191,9 +191,7 @@ body {
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 3px;
-    background: linear-gradient(90deg, #00ff88, #00cc88);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #006400;
 }
 
 /* Chat Container */
@@ -201,7 +199,7 @@ body {
     flex: 1;
     overflow-y: auto;
     padding: 20px;
-    background: #000;
+    background: #f8fff8;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -225,9 +223,8 @@ body {
     text-transform: uppercase;
     letter-spacing: 4px;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #00ff88, #00cc88);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #006400;
+    text-shadow: 2px 2px 0px rgba(0, 128, 0, 0.3);
 }
 
 .pixel-subtitle {
@@ -235,7 +232,7 @@ body {
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #00ff88;
+    color: #228b22;
     margin-bottom: 30px;
 }
 
@@ -244,18 +241,18 @@ body {
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #00cc88;
+    color: #228b22;
     margin-top: 40px;
-    border: 4px solid #00ff88;
+    border: 4px solid #008000;
     padding: 20px;
     display: inline-block;
-    background: #000;
+    background: #f0fff0;
     transition: all 0.3s;
 }
 
 .start-chatting:hover {
-    background: #00ff88;
-    color: #000;
+    background: #008000;
+    color: #fff;
 }
 
 /* Messages */
@@ -263,8 +260,8 @@ body {
     max-width: 80%;
     animation: messageAppear 0.3s ease-out;
     padding: 20px;
-    border: 4px solid #00ff88;
-    background: #000;
+    border: 4px solid #008000;
+    background: #fafffa;
 }
 
 @keyframes messageAppear {
@@ -274,16 +271,16 @@ body {
 
 .user-message {
     align-self: flex-end;
-    background: #00ff88;
-    color: #000;
-    border: 4px solid #00ff88;
+    background: #008000;
+    color: #fff;
+    border: 4px solid #008000;
 }
 
 .ai-message {
     align-self: flex-start;
-    background: #000;
-    color: #fff;
-    border: 4px solid #00ff88;
+    background: #fafffa;
+    color: #333;
+    border: 4px solid #008000;
 }
 
 .message-content {
@@ -297,8 +294,8 @@ body {
 /* Input Area */
 .input-container {
     padding: 20px;
-    border-top: 4px solid #00ff88;
-    background: #000;
+    border-top: 4px solid #008000;
+    background: #f0fff0;
 }
 
 .input-wrapper {
@@ -311,9 +308,9 @@ body {
 .message-input {
     flex: 1;
     padding: 20px;
-    background: #000;
-    border: 4px solid #00ff88;
-    color: #fff;
+    background: #fff;
+    border: 4px solid #008000;
+    color: #333;
     font-family: 'Poopins', monospace;
     font-size: 18px;
     font-weight: 900;
@@ -326,17 +323,17 @@ body {
 
 .message-input:focus {
     outline: none;
-    background: #111;
+    background: #f0fff0;
 }
 
 .message-input::placeholder {
-    color: #00cc88;
+    color: #228b22;
 }
 
 .send-btn {
-    background: #00ff88;
-    color: #000;
-    border: 4px solid #00ff88;
+    background: #008000;
+    color: #fff;
+    border: 4px solid #008000;
     width: 60px;
     height: 60px;
     cursor: pointer;
@@ -351,8 +348,8 @@ body {
 }
 
 .send-btn:hover {
-    background: #000;
-    color: #00ff88;
+    background: #fff;
+    color: #008000;
 }
 
 .send-btn:disabled {
@@ -363,8 +360,8 @@ body {
 /* Typing Indicator */
 .typing-indicator {
     padding: 20px;
-    border: 4px solid #00ff88;
-    background: #000;
+    border: 4px solid #008000;
+    background: #fafffa;
     align-self: flex-start;
     display: flex;
     gap: 10px;
@@ -373,7 +370,7 @@ body {
 .typing-dot {
     width: 12px;
     height: 12px;
-    background: #00ff88;
+    background: #008000;
     border-radius: 0;
     animation: typingBounce 1s infinite;
 }
@@ -394,16 +391,16 @@ body {
 
 .chat-container::-webkit-scrollbar-track,
 .history-list::-webkit-scrollbar-track {
-    background: #000;
+    background: #f0fff0;
 }
 
 .chat-container::-webkit-scrollbar-thumb,
 .history-list::-webkit-scrollbar-thumb {
-    background: #00ff88;
-    border: 2px solid #000;
+    background: #008000;
+    border: 2px solid #f0fff0;
 }
 
-/* Islamic Decorative Elements */
+/* Islamic Pattern Background */
 .islamic-pattern {
     position: fixed;
     top: 0;
@@ -414,7 +411,7 @@ body {
     opacity: 0.05;
     z-index: -1;
     background-image: 
-        radial-gradient(circle at 25% 25%, #00ff88 2px, transparent 2px),
-        radial-gradient(circle at 75% 75%, #00ff88 2px, transparent 2px);
+        radial-gradient(circle at 25% 25%, #008000 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, #008000 2px, transparent 2px);
     background-size: 100px 100px;
 }
