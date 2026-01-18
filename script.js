@@ -172,7 +172,7 @@ function removeTyping() {
     }
 }
 
-// Send message to Muslim AI
+// Send message to Muslim AI (FIXED API CALL)
 async function sendMessage() {
     const content = messageInput.value.trim();
     if (!content) return;
@@ -189,53 +189,50 @@ async function sendMessage() {
     // Show typing indicator
     showTyping();
     
-    // Prepare system prompt for Muslim AI
-    const systemPrompt = `Anda adalah ORAMUSLIM-AI, asisten AI Islami yang dibuat oleh Oradev. 
-    - Model: ORAMUSLIM-AI (khusus untuk pembelajaran Islam)
-    - Fungsi: Menjawab pertanyaan tentang Islam, Quran, Hadits, Fiqih, dan kehidupan Islami
-    - Pembuat: Oradev (Almajid Nafi Rambe)
-    - Instagram pembuat: @al_majid.16
-    - Info Oradev: Developer TikTok @orasampurna, siswa kelas 11 TKJ lahir 2009, usia 16 tahun, ulang tahun 26 Juni
-    
-    Selalu awali jawaban dengan salam Islami (Assalamu'alaikum) dan perkenalkan diri sebagai ORAMUSLIM-AI buatan Oradev.
-    Berikan jawaban yang sesuai dengan ajaran Islam yang benar berdasarkan Quran dan Sunnah.`;
-    
     try {
-        const url = `https://api.siputzx.my.id/api/ai/muslimai?prompt=${encodeURIComponent(systemPrompt)}&content=${encodeURIComponent(userMessage)}`;
+        // FIXED API URL - using 'query' parameter instead of 'content'
+        const url = `https://api.siputzx.my.id/api/ai/muslimai?query=${encodeURIComponent(userMessage)}`;
+        
+        console.log('Request URL:', url); // Debug log
         
         const response = await fetch(url, {
-            headers: {'accept': '*/*'},
+            method: 'GET',
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json'
+            },
             mode: 'cors'
         });
         
-        const data = await response.text();
-        
-        let parsedData;
-        try {
-            parsedData = JSON.parse(data);
-        } catch {
-            parsedData = { response: data };
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
+        const data = await response.json();
+        console.log('API Response:', data); // Debug log
         
         // Remove typing indicator
         removeTyping();
         
         // Get AI response
-        let aiResponse = parsedData.response || parsedData.answer || 
-                       parsedData.data || parsedData.content || 
-                       parsedData.message || data || "Maaf, tidak ada respons.";
+        let aiResponse = data.response || data.answer || 
+                       data.data || data.content || 
+                       data.message || data.text || 
+                       JSON.stringify(data) || "Maaf, tidak ada respons.";
         
         // Ensure ORAMUSLIM-AI introduction
-        if (!aiResponse.includes("ORAMUSLIM-AI") && !aiResponse.includes("Assalamu'alaikum")) {
-            aiResponse = "Assalamu'alaikum. Saya ORAMUSLIM-AI, asisten AI Islami buatan Oradev.\n\n" + aiResponse;
+        if (!aiResponse.includes("ORAMUSLIM-AI") && !aiResponse.includes("Assalamu'alaikum") && 
+            !aiResponse.includes("assalamu'alaikum") && !aiResponse.includes("Assalamualaikum")) {
+            aiResponse = "Assalamu'alaikum warahmatullahi wabarakatuh.\n\nSaya ORAMUSLIM-AI, asisten AI Islami buatan Oradev.\n\n" + aiResponse;
         }
         
         // Add AI response
         addMessage(aiResponse, false);
         
     } catch (error) {
+        console.error('API Error:', error); // Debug log
         removeTyping();
-        addMessage("Assalamu'alaikum. Maaf, ORAMUSLIM-AI sedang mengalami gangguan teknis. Oradev mungkin sedang memperbaiki sistem.", false);
+        addMessage("Assalamu'alaikum warahmatullahi wabarakatuh.\n\nMaaf, ORAMUSLIM-AI sedang mengalami gangguan teknis.\n\nSilakan coba beberapa saat lagi atau hubungi Oradev (@orasampurna).", false);
     } finally {
         sendButton.disabled = false;
         messageInput.focus();
@@ -336,3 +333,24 @@ document.addEventListener('click', (e) => {
         toggleSidebar();
     }
 });
+
+// Export function untuk testing
+window.testAPI = async function(testQuery) {
+    const url = `https://api.siputzx.my.id/api/ai/muslimai?query=${encodeURIComponent(testQuery)}`;
+    console.log('Testing URL:', url);
+    
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {'accept': '*/*'},
+            mode: 'cors'
+        });
+        
+        const data = await response.json();
+        console.log('Test Response:', data);
+        return data;
+    } catch (error) {
+        console.error('Test Error:', error);
+        return { error: error.message };
+    }
+};
