@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORAMUSLIM-AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poopins:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="oramuslim-style.css">
+</head>
+<body>
+    <!-- Sidebar - History Only -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">HISTORI CHAT</div>
+            <button class="clear-history-btn" onclick="clearAllHistory()">HAPUS</button>
+        </div>
+        
+        <div class="history-list" id="historyList">
+            <!-- History items will be loaded here -->
+            <div class="no-history" id="noHistory">BELUM ADA HISTORI</div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <button class="new-chat-btn" onclick="newChat()">CHAT BARU</button>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+            <div class="logo">ORAMUSLIM-AI</div>
+            <div style="width: 50px;"></div> <!-- Spacer -->
+        </div>
+        
+        <!-- Chat Container -->
+        <div class="chat-container" id="chatContainer">
+            <!-- Welcome Message -->
+            <div class="welcome-container" id="welcomeMessage">
+                <div class="pixel-title">ORAMUSLIM-AI</div>
+                <div class="pixel-subtitle">ISLAMIC INTELLIGENCE</div>
+                <div class="start-chatting">KETIK UNTUK MEMULAI →</div>
+            </div>
+            
+            <!-- Messages will be added here -->
+        </div>
+        
+        <!-- Input Area -->
+        <div class="input-container">
+            <div class="input-wrapper">
+                <textarea 
+                    class="message-input" 
+                    id="messageInput" 
+                    placeholder="TANYAKAN TENTANG ISLAM..."
+                    rows="1"
+                    oninput="autoResize(this)"
+                ></textarea>
+                <button class="send-btn" id="sendButton" onclick="sendMessage()">→</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="oramuslim-script.js"></script>
+</body>
+</html>
